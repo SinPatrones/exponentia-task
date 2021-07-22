@@ -53,3 +53,23 @@ body {
     border: 1px solid #ced4da;
     border-radius: 2px;
 }
+
+.btn {
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border: 0 solid black;
+    border-radius: 5px;
+    font-weight: bold;
+    align-self: center;
+    cursor: pointer;
+}
+
+.message {
+    align-self: center;
+    margin-top: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+}

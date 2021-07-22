@@ -10,6 +10,8 @@ function App() {
     const [autoRespuestaType, setAutoRespuestaType] = useState("0");
     const [autoRespuestaList, setAutoRespuestaList] = useState([]);
 
+    const [message, setMessage] = useState("");
+
     const companyTypeList = [
         {id: "ct0", value: "Seleccionar"},
         {id: "ct1", value: "Delivery"},
@@ -37,32 +39,32 @@ function App() {
         };
 
     const autoRespuestaControl = (evt) => {
-        console.log("AutoRespuesta", evt.target.value);
         setFlujoType(evt.target.value);
         if (evt.target.value === "f2" && companyType === "ct1"){
-            console.log("Opción F2 - delivery");
             setAutoRespuestaList([
                 {id: "ar1", value: "Deshabilitado"},
                 {id: "ar2", value: "Pedir datos y derivar"},
                 {id: "ar3", value: "Manejo automático"},
             ]);
         } else if (evt.target.value === "f2" && (companyType === "ct2" || companyType === "ct3")) {
-            console.log("Opción FF2");
             setAutoRespuestaList([
                 {id: "ar1", value: "Deshabilitado"},
                 {id: "ar3", value: "Clasificación automática"},
             ]);
         } else {
-            console.log("NINGUNO");
             setAutoRespuestaList([]);
             setAutoRespuestaType("0");
         }
-        console.log("autoRespuestaList", autoRespuestaList);
     };
+
+    const onSubmit = (evt) => {
+        evt.preventDefault();
+        setMessage("Datos Enviados");
+    }
 
     return (
         <div className="wrapper">
-            <form action="" className="form">
+            <form action="" className="form" onSubmit={onSubmit}>
                 <Input
                     nameInput={"companyName"}
                     labelTitle={"Nombre de empresa"}
@@ -105,6 +107,12 @@ function App() {
                         value={autoRespuestaType}
                     />
                 }
+
+                <button className="btn" type="submit">Enviar</button>
+
+                <p className="message">
+                    { message } de la empresa { companyName }
+                </p>
             </form>
 
         </div>
